@@ -1,3 +1,4 @@
+import Viewer from "./component/Viewer";
 import Controller from "./component/Controller";
 import { useState, useEffect } from "react";
 
