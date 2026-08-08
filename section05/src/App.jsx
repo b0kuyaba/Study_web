@@ -1,19 +1,16 @@
 import './App.css'
-
-const Header = () => {
-  return (
-      <header>
-        <h1>header</h1>
-      </header>
-  )
-}
+import Header from "./components/Header"
+import Main from "./components/Main"
+import Footer from "./components/Footer"
+import Button from "./components/Button.jsx"
 
 function App() {
 
   return (
     <>
-        <Header/>
-      <h1>안녕 리액트!</h1>
+        <Button text = {"메일"} color = {"red"} />
+        <Button text = {"카페"} />
+        <Button text = {"블로그"} />
     </>
   )
 }
