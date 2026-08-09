@@ -1,21 +1,32 @@
 import './App.css'
-
-const Header = () => {
-  return (
-      <header>
-        <h1>header</h1>
-      </header>
-  )
-}
+import { useState } from "react"
 
 function App() {
+    const [count, setCount] = useState(0);
+    const [light, setLight] = useState("OFF")
 
   return (
-    <>
-        <Header/>
-      <h1>안녕 리액트!</h1>
-    </>
-  )
+      <>
+          <div>
+              <h1>{light}</h1>
+              <button onClick={() => {
+                  setLight(light === "ON" ? "OFF":"ON")
+              }}
+              >
+                  {light === "ON" ? "끄기" : "켜기"}
+              </button>
+          </div>
+          <div>
+          <h1>{count}</h1>
+          <button onClick={() =>{
+              setCount(count + 1);
+          }}
+          >
+              +
+          </button>
+          </div>
+      </>
+  );
 }
 
 export default App
