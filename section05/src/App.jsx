@@ -1,19 +1,26 @@
 import './App.css'
-
-const Header = () => {
-  return (
-      <header>
-        <h1>header</h1>
-      </header>
-  )
-}
+import Header from "./components/Header"
+import Main from "./components/Main"
+import Footer from "./components/Footer"
+import Button from "./components/Button.jsx"
+import button from "./components/Button.jsx";
 
 function App() {
+    const buttonProps = {
+        text :"메일",
+        color : "red",
+        a: 1,
+        b: 2,
+        c: 3,
+    };
 
   return (
     <>
-        <Header/>
-      <h1>안녕 리액트!</h1>
+        <Button {...buttonProps}/>
+        <Button text = {"카페"} />
+        <Button text = {"블로그"}>
+            <Header/>
+        </Button>
     </>
   )
 }
