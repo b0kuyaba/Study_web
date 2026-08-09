@@ -19,4 +19,4 @@ const Bulb = () => {
     )
 }
 
-export default Bulb;
+export default Bulb
