@@ -1,14 +1,19 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+
 import './App.css'
+import Header from "./components/Header.jsx";
+import Editor from "./components/Editor.jsx";
+import List from "./components/Editor.jsx";
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>TodoList</>
+    <div className="App">
+      <Header/>
+      <Editor/>
+      <List />
+    </div>
   )
 }
 
