@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from "react";
+import {useRef, useState} from "react";
 import Header from "./components/Header.jsx";
 import Editor from "./components/Editor.jsx";
 import List from "./components/List.jsx";
@@ -27,10 +27,11 @@ const mockData = [
 
 function App() {
     const [todos, setTodos] = useState( mockData )
+    const idRef = useRef(3)
 
     const onCreate = (content) => {
         const newTodo = {
-            id: 0,
+            id: idRef.current++,
             isDone: false,
             content: content,
             data: new Date().getTime()
