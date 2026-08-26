@@ -7,7 +7,7 @@ const List = ({todos}) => {
         <input placeholder="검색어를 입력하세요"/>
         <div className="Todos_wrapper">
             {todos.map((todo) => {
-                return <div>{todo.content}</div>;
+                return <TodoItem key={todo.id} {...todo}/>
             }) }
         </div>
     </div>
