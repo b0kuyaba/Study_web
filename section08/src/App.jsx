@@ -38,6 +38,18 @@ function App() {
         }
 
         setTodos([newTodo, ...todos]);
+
+        const onUpdate = (targetId) => {
+
+            setTodos(todos.map(todo => {
+                if (todo.id === targetId) {
+                    return {
+                        ...todo,
+
+                    }
+                }
+            }))
+        }
     }
 
   return (
