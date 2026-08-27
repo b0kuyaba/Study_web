@@ -1,5 +1,5 @@
 import './App.css'
-import {useRef, useState} from "react";
+import { useRef, useState } from "react";
 import Header from "./components/Header.jsx";
 import Editor from "./components/Editor.jsx";
 import List from "./components/List.jsx";
@@ -9,25 +9,25 @@ const mockData = [
         id: 0,
         isDone: false,
         content: "React 공부하기",
-        date: new Date().getDate(),
+        date: new Date().getTime(),
     },
     {
         id: 1,
         isDone: false,
         content: "빨래하기",
-        date: new Date().getDate(),
+        date: new Date().getTime(),
     },
     {
         id: 2,
         isDone: false,
         content: "노래 연습하기",
-        date: new Date().getDate(),
+        date: new Date().getTime(),
     },
 ];
 
 function App() {
-    const [todos, setTodos] = useState( mockData )
-    const idRef = useRef(3)
+    const [todos, setTodos] = useState(mockData);
+    const idRef = useRef(3);
 
     const onCreate = (content) => {
         const newTodo = {
@@ -35,30 +35,28 @@ function App() {
             isDone: false,
             content: content,
             date: new Date().getTime()
-        }
+        };
 
         setTodos([newTodo, ...todos]);
+    };
 
-        const onUpdate = (targetId) => {
+    const onUpdate = (targetId) => {
+        setTodos(
+            todos.map((todo) =>
+                todo.id === targetId
+                    ? { ...todo, isDone: !todo.isDone }
+                    : todo
+            )
+        );
+    };
 
-            setTodos(todos.map(todo => {
-                if (todo.id === targetId) {
-                    return {
-                        ...todo,
-
-                    }
-                }
-            }))
-        }
-    }
-
-  return (
-    <div className="App">
-      <Header/>
-      <Editor onCreate={onCreate}/>
-      <List todos={todos}/>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Header />
+            <Editor onCreate={onCreate} />
+            <List todos={todos} onUpdate={onUpdate} />
+        </div>
+    );
 }
 
-export default App
+export default App;
