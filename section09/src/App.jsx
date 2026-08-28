@@ -26,8 +26,16 @@ const mockData = [
     },
 ];
 
-function reducer (){
-
+function reducer (state, action){
+    switch (action.type) {
+        case 'CREATE':
+            return [action.data, ...state];
+        case 'UPDATE':
+            return state.map((item)=>
+                item.id === action.targetId
+                ? {...item, isDone: !item.isDone}
+                : item)
+    }
 }
 
 function App() {
@@ -47,13 +55,10 @@ function App() {
     };
 
     const onUpdate = (targetId) => {
-        setTodos(
-            todos.map((todo) =>
-                todo.id === targetId
-                    ? { ...todo, isDone: !todo.isDone }
-                    : todo
-            )
-        );
+        dispatch({
+            type:'UPDATE',
+            targetId:targetId
+        })
     };
 
     const onDelete = (targetId) => {
