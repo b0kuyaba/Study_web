@@ -1,5 +1,5 @@
 import './App.css'
-import { useRef, useState } from "react";
+import {useReducer, useRef, useState} from "react";
 import Header from "./components/Header.jsx";
 import Editor from "./components/Editor.jsx";
 import List from "./components/List.jsx";
@@ -26,19 +26,24 @@ const mockData = [
     },
 ];
 
+function reducer (){
+
+}
+
 function App() {
-    const [todos, setTodos] = useState(mockData);
+    const [todos, dispatch] = useReducer(reducer, mockData);
     const idRef = useRef(3);
 
     const onCreate = (content) => {
-        const newTodo = {
-            id: idRef.current++,
-            isDone: false,
-            content: content,
-            date: new Date().getTime()
-        };
-
-        setTodos([newTodo, ...todos]);
+        dispatch({
+            type:"CREATE",
+            data: {
+                id:idRef.current ++,
+                isDone:false,
+                content:content,
+                date : new Date().getTime()
+            }
+        })
     };
 
     const onUpdate = (targetId) => {
@@ -57,14 +62,13 @@ function App() {
 
     return (
         <div className="App">
-            <Exam/>
-            {/*<Header />*/}
-            {/*<Editor onCreate={onCreate} />*/}
-            {/*<List*/}
-            {/*    todos={todos}*/}
-            {/*    onUpdate={onUpdate}*/}
-            {/*    onDelete={onDelete}*/}
-            {/*/>*/}
+            <Header />
+            <Editor onCreate={onCreate} />
+            <List
+                todos={todos}
+                onUpdate={onUpdate}
+                onDelete={onDelete}
+            />
         </div>
     );
 }
