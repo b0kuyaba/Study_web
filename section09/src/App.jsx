@@ -35,6 +35,9 @@ function reducer (state, action){
                 item.id === action.targetId
                 ? {...item, isDone: !item.isDone}
                 : item)
+        case 'DELETE':
+            return state.filter((item) => item.id !== action.targetId)
+        default : return state
     }
 }
 
@@ -53,17 +56,19 @@ function App() {
             }
         })
     };
-
     const onUpdate = (targetId) => {
         dispatch({
             type:'UPDATE',
             targetId:targetId
-        })
+        });
     };
 
     const onDelete = (targetId) => {
-        setTodos(todos.filter((todo) => todo.id !== targetId))
-    }
+        dispatch({
+            type:'DELETE',
+            targetId:targetId,
+        });
+    };
 
     return (
         <div className="App">
