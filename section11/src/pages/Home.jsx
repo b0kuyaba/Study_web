@@ -1,6 +1,6 @@
-import Header from "../components/Header.jsx"
-import Button from "../components/Button.jsx"
-import DiaryList from "../components/DiaryList.jsx";
+import Header from "../components/Header/Header.jsx"
+import Button from "../components/Button/Button.jsx"
+import DiaryList from "../components/DiaryList/DiaryList.jsx";
 
 const Home = () => {
 
