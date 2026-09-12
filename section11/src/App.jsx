@@ -32,6 +32,11 @@ function Reducer(state,action){
                     ? action.data
                     : item
             );
+        case "DELETE":
+            return state.filter((item) => String(item.id) !== String(action.id)
+            );
+        default:
+            return state
     }
 }
 
@@ -64,6 +69,11 @@ function App() {
             }
         )
     }
+
+    const onDelete = (id) => {
+
+    }
+
   return (
       <>
           <button onClick={() => {
@@ -74,8 +84,17 @@ function App() {
 
           <button onClick={() => {
               onUpdate(1, new Date().getTime(), 3, "수정된 일기입니다.")
-          }}>
+          }}
+          >
               일기 수정 테스트
+          </button>
+
+          <button
+          onClick={() => {
+              onDelete(1);
+          }}
+          >
+              일기 삭제 테스트
           </button>
 
           <Routes>
