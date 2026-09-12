@@ -4,6 +4,7 @@ import Home from "./pages/Home.jsx"
 import Diary from "./pages/Diary.jsx"
 import New from "./pages/New.jsx"
 import Notfound from "./pages/Notfound.jsx";
+import Button from "./components/Button.jsx"
 
 import { getEmotionImage } from "./util/get-emotion-image.js";
 
@@ -15,21 +16,29 @@ function App() {
   }
   return (
       <>
-          <div>
-              <img src={getEmotionImage(1)} alt=""/>
-              <img src={getEmotionImage(2)} alt=""/>
-              <img src={getEmotionImage(3)} alt=""/>
-              <img src={getEmotionImage(4)} alt=""/>
-              <img src={getEmotionImage(5)} alt=""/>
-          </div>
-        <div>
-          <Link to={"/"}>Home</Link>
-          <Link to={"/new"}>New</Link>
-          <Link to={"/diary"}>Diary</Link>
-        </div>
-        <button onClick={onClickButton}>
-          New 페이지로 이동
-        </button>
+          <Button
+              text={"123"}
+              onClick={()=> {
+                  console.log("123번 버튼 클릭!");
+              }}
+          />
+
+          <Button
+              text={"123"}
+              type={"POSITIVE"}
+              onClick={()=> {
+                  console.log("123번 버튼 클릭!");
+              }}
+          />
+
+          <Button
+              text={"123"}
+              type={"NEGATIVE"}
+              onClick={()=> {
+                  console.log("123번 버튼 클릭!");
+              }}
+          />
+
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/new" element={<New />}/>
