@@ -24,7 +24,14 @@ const mockData = [
 
 function Reducer(state,action){
     switch (action.type) {
-        case "CREATE": return [action.data, ...state]
+        case "CREATE":
+            return [action.data, ...state]
+        case "UPDATE":
+            return state.map((item) =>
+                String(item.id) === String(action.data.id)
+                    ? action.data
+                    : item
+            );
     }
 }
 
@@ -43,12 +50,34 @@ function App() {
             },
         });
     }
+
+    const onUpdate = (id, createDate, emotionId, content) => {
+        dispatch(
+            {
+                type:"UPDATE",
+                data: {
+                    id,
+                    createDate,
+                    emotionId,
+                    content,
+                }
+            }
+        )
+    }
   return (
       <>
           <button onClick={() => {
               onCreate(new Date().getTime(), 1, "Hello")
           }}
-          >일기 추 테스트</button>
+          >일기 추가 테스트
+          </button>
+
+          <button onClick={() => {
+              onUpdate(1, new Date().getTime(), 3, "수정된 일기입니다.")
+          }}>
+              일기 수정 테스트
+          </button>
+
           <Routes>
             <Route path="/" element={<Home />}/>
             <Route path="/new" element={<New />}/>
