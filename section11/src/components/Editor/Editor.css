@@ -1,0 +1,13 @@
+.Editor > section > h1 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.Editor > section > input {
+    background-color: rgb(236, 236, 236);
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 10px 20px;
+}
+
