@@ -1,4 +1,5 @@
 import './App.css'
+import {useReducer} from "react";
 import {Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.jsx"
 import Diary from "./pages/Diary.jsx"
@@ -6,7 +7,28 @@ import New from "./pages/New.jsx"
 import Edit from "./pages/Edit.jsx"
 import Notfound from "./pages/Notfound.jsx";
 
+const mockData = [
+    {
+        id: 1,
+        createdDate: new Date().getTime(),
+        emotionId : 1,
+        content: "1번 일기 내용",
+    },
+    {
+        id: 2,
+        createdDate: new Date().getTime(),
+        emotionId : 2,
+        content: "2번 일기 내용",
+    },
+]
+
+function Reducer(state,action){
+    return state;
+}
+
 function App() {
+    const [data, dispatch] = useReducer(Reducer, mockData);
+
   return (
       <>
           <Routes>
