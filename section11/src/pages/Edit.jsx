@@ -8,7 +8,7 @@ import Editor from "../components/Editor/Editor.jsx";
 const Edit = () => {
     const params = useParams();
     const nav = useNavigate();
-    const {onDelete} = useContext(DiaryDispatchContext);
+    const {onDelete, onUpdate} = useContext(DiaryDispatchContext);
     const data = useContext(DiaryStateContext);
     const [curDiaryItem, setCurDiaryItem] = useState();
 
@@ -23,7 +23,7 @@ const Edit = () => {
         }
 
         setCurDiaryItem(currentDiaryItem);
-    }, [params.id,data]);
+    }, [params.id]);
 
     const onClickDelete = () => {
         if (
@@ -34,6 +34,18 @@ const Edit = () => {
         }
 
     }
+
+    const onSubmit = (input) => {
+        if (window.confirm("일기를 정말 수정할까요?")) {
+            onUpdate(
+                params.id,
+                input.createdDate,
+                input.emotionId,
+                input.content
+            );
+            nav("/", {replace:true});
+        }
+    };
 
     return (
         <div>
