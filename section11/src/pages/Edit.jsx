@@ -1,10 +1,19 @@
-import {useParams} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
+import Header from "../components/Header/Header.jsx";
+import Button from "../components/Button/Button.jsx";
+import Editor from "../components/Editor/Editor.jsx";
 
 const Edit = () => {
     const prams = useParams();
+    const nav = useNavigate();
     return (
         <div>
-            {prams.id}번 일기 수정페이지입니다.
+            <Header
+                title={"일기 수정하기"}
+                leftChild={<Button onClick={() => {nav(-1)}} text={"< 뒤로가기"}/>}
+                rightChild={<Button text={"삭제하기"} type={"NEGATIVE"}/>}
+            />
+            <Editor />
         </div>
     );
 };
