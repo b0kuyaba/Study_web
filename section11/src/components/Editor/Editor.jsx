@@ -1,5 +1,6 @@
 import "./Editor.css"
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 import EmotionItem from "../EmotionItem/EmotionItem.jsx";
 import Button from "../Button/Button.jsx";
 
@@ -48,6 +49,7 @@ const Editor = ({onSubmit}) => {
         emotionId: 3,
         content: "",
     });
+    const nav = useNavigate();
 
     const onChangeInput = (e) => {
         console.log(e.target.name);
@@ -109,7 +111,7 @@ const Editor = ({onSubmit}) => {
                     placeholder="오늘은 어땠나요?"/>
             </section>
             <section className="button_section">
-                <Button text={"취소하기"}/>
+                <Button onClick={() => {nav(-1)}} text={"취소하기"}/>
                 <Button
                     onClick={onClickSubmitButton}
                     text={"작성완료"}

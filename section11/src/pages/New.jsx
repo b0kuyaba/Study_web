@@ -14,7 +14,9 @@ const New = () => {
         onCreate(
             input.createdDate.getTime(),
             input.emotionId,
-            input.content);
+            input.content
+        );
+        nav('/', {replace: true})
     };
 
     return (
