@@ -11,10 +11,10 @@ const Viewer = () => {
     );
 
     return (
-        <div>
+        <div className="Viewer">
             <section className="img_section">
                 <h4>오늘의 감정</h4>
-                <div>
+                <div className={`emotion_img_wrapper emotion_img_wrapper_${emotionId}`}>
                     <img src={getEmotionImage(emotionId)} alt=""/>
                     <div>
                         {emotionItem.emotionName}</div>
